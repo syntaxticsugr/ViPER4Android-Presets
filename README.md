@@ -1,83 +1,54 @@
-# ViPER4AndroidFX Presets
+<div align="center">
+<p>
+<span style="font-size: 24px; font-weight: bold;">ViPER4Android Presets</span>
 
-Largest collection of DDC(.vdc), Kernel(.irs) & Preset(.xml) for ViPER4AndroidFX
+<span><b>Largest collection of DDC(.vdc), Kernel(.irs) & Preset(.xml) for ViPER4Android</b></span>
+</p>
 
-[![Android](https://img.shields.io/badge/Platform-Android-green.svg?style=flat-square)](https://www.android.com) [![Release](https://img.shields.io/github/v/release/syntaxticsugr/ViPER4AndroidFXRepack-Presets?color=blue&label=Release&style=flat-square)](https://github.com/syntaxticsugr/ViPER4AndroidFXRepack-Presets/releases) [![Downloads](https://img.shields.io/github/downloads/syntaxticsugr/ViPER4AndroidFXRepack-Presets/total?color=brightgrey&label=Downloads&style=flat-square)](https://github.com/syntaxticsugr/ViPER4AndroidFXRepack-Presets/releases)
-
-If you find my work useful feel free to Star ⭐ my repo 😛
-<br>
-And if you use my work in your project, a credit would be nice 🙂
-
-<br>
-
-\* The repo isn't abandoned, it will always be updated when necessary : )
+[![Release](https://img.shields.io/github/v/release/syntaxticsugr/ViPER4Android-Presets?color=blue&label=Release&style=flat-square)](https://github.com/syntaxticsugr/ViPER4Android-Presets/releases/latest) [![Downloads](https://img.shields.io/github/downloads/syntaxticsugr/ViPER4Android-Presets/total?color=brightgrey&label=Downloads&style=flat-square)](https://github.com/syntaxticsugr/ViPER4Android-Presets/releases)
+</div>
 
 <br>
 
 ---
 
 <br>
+<br>
 
-All current available `DDC(.vdc)`, `Kernel(.irs)` and `Preset(.xml)` are sourced from
-- [Viper4Android-presets](https://github.com/jadilson12/Viper4Android-presets)
-- [ViPER4AndroidFX Telegram Channel](https://t.me/ViPER4AndroidFX)
-- [ViPER4AndroidRepackaged](https://github.com/programminghoch10/ViPER4AndroidRepackaged)
-- [ViperFX-RE-Releases](https://github.com/WSTxda/ViperFX-RE-Releases)
+`DDC(.vdc)` & `Kernel(.irs)` files are provided _as is_ from the orignal authors without any modifications.
+
+All `Preset(.xml)` are patched as & if necessary to work on the latest ViPER4AndroidFX.
+
+Values of `Master Limiter` & `Playback Gain Control` are set to [ViPER Defaults](https://github.com/syntaxticsugr/ViPER4Android-Presets/tree/main/scripts/utils/default_presets) for all patched `Preset(.xml)`.
 
 <br>
 
----
-
-<br>
-
-All the `Preset(.xml)` are patched to work on the latest ViPER4AndroidFX
-
-### Patch Information:
-- Added missing Features
-- Updated old Feature Key-Value pairs
-- Normalized values of the following ViPER features:
-  - Field Surround
-  - Differential Surround
-  - Dynamic System
-  - ViPER Bass
-  - ViPER Clarity
-
-** Values of Master Limiter & Playback Gain Control are set to ViPER Defaults for all the Presets. (Subject To Change In Future)
-
-Check `utils` folder for the Python Code and Steps involved in Renaming, Patching and more.
-
-<br>
-
----
-
-<br>
-
-### v1.6.0 Final Release
+<p style="font-size: 20px; font-weight: bold;"><a href="https://github.com/syntaxticsugr/ViPER4Android-Presets/releases/latest">Release Info - v1.7.0</a></p>
 
 | ⭐ | Total | Uniques |
 | --- | --- | --- |
-| **DDC** | 612 | 572 |
-| **Kernel** | 2183 | 1589 |
-| **Preset** | 1685 | 851 |
+| **DDC** | 625 | ? |
+| **Kernel** | 2298 | ? |
+| **Preset** | 1648 | ? |
 
 <br>
 
-Fun Fact: There are some Presets with 30, 40 or even 50+ Duplicates but, one Preset in particular have 360+ Duplicates.
+<p style="font-size: 20px; font-weight: bold;"><a href="https://github.com/syntaxticsugr/ViPER4Android-Presets/discussions/3">How To Use?</a></p>
+
 <br>
-`Alternative-Medicine-Jmxc23-usb.xml` if only i was so popular : )
+
+<p>
+<span style="font-size: 18px; font-weight: bold;">Want to share your collection of DDC's, Kernel's & Preset's?</span><br>
+<span style="font-size: 18px; font-weight: bold;"><a href="https://forms.gle/1JShGMdbTbujJfKQ9">Fill this Form : )</a></span>
+</p>
 
 <br>
 
 ---
 
-### Credits
+<br>
+<br>
 
-[Jadilson Guedes](https://github.com/jadilson12)
-<br>
-[ViPER4AndroidFX Telegram Channel](https://t.me/ViPER4AndroidFX)
-<br>
-[programminghoch10](https://github.com/programminghoch10)
-<br>
-[WSTxda](https://github.com/WSTxda)
+<p style="font-size: 22px; font-weight: bold;">Credits</p>
 
-<br>
+[![Jadilson Guedes](https://images.weserv.nl/?url=https://github.com/jadilson12.png&h=50&w=50&fit=cover&mask=circle)](https://github.com/jadilson12) [![Joe0Bloggs](https://images.weserv.nl/?url=https://github.com/Joe0Bloggs.png&h=50&w=50&fit=cover&mask=circle)](https://github.com/Joe0Bloggs) [![John Fawkes](https://images.weserv.nl/?url=https://github.com/JohnFawkes.png&h=50&w=50&fit=cover&mask=circle)](https://github.com/JohnFawkes) [![programminghoch10](https://images.weserv.nl/?url=https://github.com/programminghoch10.png&h=50&w=50&fit=cover&mask=circle)](https://github.com/programminghoch10) [![WSTxda](https://images.weserv.nl/?url=https://github.com/WSTxda.png&h=50&w=50&fit=cover&mask=circle)](https://github.com/WSTxda)
