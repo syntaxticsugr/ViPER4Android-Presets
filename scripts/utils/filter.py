@@ -4,15 +4,7 @@ from pathlib import Path
 
 
 
-def filter_irs_vdc(input_dir: Path, output_dir: Path):
-
-    irs_dir = output_dir/'Kernel'
-    vdc_dir = output_dir/'DDC'
-    xml_dir = output_dir/'Preset'
-
-    irs_dir.mkdir(parents=True, exist_ok=True)
-    vdc_dir.mkdir(parents=True, exist_ok=True)
-    xml_dir.mkdir(parents=True, exist_ok=True)
+def filter_irs_vdc_xml(input_dir: Path, irs_dir: Path, vdc_dir: Path, xml_dir: Path):
 
     for root, _, files in os.walk(input_dir):
 
@@ -35,4 +27,4 @@ def filter_irs_vdc(input_dir: Path, output_dir: Path):
                 else:
                     new_file_name = file_name
 
-                shutil.copy2(full_path, f"{str(xml_dir)}/{str(new_file_name)}.xml")
+                shutil.copy2(full_path, f'{xml_dir/new_file_name}.xml')

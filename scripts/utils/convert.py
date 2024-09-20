@@ -5,8 +5,8 @@ from pathlib import Path
 
 def convert_presets(input_dir: Path, output_dir: Path):
 
-    default_m1_preset_file = r'scripts/utils/default_presets/default_m1.xml'
-    default_m2_preset_file = r'scripts/utils/default_presets/default_m2.xml'
+    default_m1_preset_file = Path('scripts/utils/default_presets/default_m1.xml')
+    default_m2_preset_file = Path('scripts/utils/default_presets/default_m2.xml')
 
     # List of input Presets
     presets = os.listdir(input_dir)
@@ -19,8 +19,8 @@ def convert_presets(input_dir: Path, output_dir: Path):
         # Default M2 Preset
         # Input Preset
         # New Preset
-        preset_file = f'{input_dir}/{preset}'
-        new_preset_file = f'{output_dir}/{os.path.basename(preset)}'
+        preset_file = input_dir/preset
+        new_preset_file = output_dir/(os.path.basename(preset))
         with (
             open(default_m1_preset_file) as default_m1_preset,
             open(default_m2_preset_file) as default_m2_preset,
