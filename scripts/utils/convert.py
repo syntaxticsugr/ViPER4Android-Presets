@@ -255,6 +255,8 @@ def convert_presets(input_dir: Path, output_dir: Path):
                             if (("65540;65541;65542" in old_line) or ("65591;65592;65593" in old_line)):
                                 # Correcting '&' in Kernel(.irs) names
                                 old_line = old_line.replace("></string>amp;", "&amp;").replace(">Select impulse response file</string>amp;", "&amp;")
+                                # Lowercase Kernel(.irs) name
+                                old_line = old_line.lower()
                                 new_preset.write(old_line.replace("65591;65592;65593", "65540;65541;65542") + "\n")
                                 break
 
@@ -317,6 +319,14 @@ def convert_presets(input_dir: Path, output_dir: Path):
                         # Auditory System Protection
                         # AnalogX
                         if (default_line[default_line.find('"')+1:default_line.find('"', default_line.find('"')+1)] == old_line[old_line.find('"')+1:old_line.find('"', old_line.find('"')+1)]):
+
+                            # ViPER DDC
+
+                            if ("65547" in default_line):
+                                # Lowercase DDC(.vdc) name
+                                old_line = old_line.lower()
+                                new_preset.write(old_line + "\n")
+                                break
 
                             # Field Surround
 
