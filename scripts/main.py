@@ -7,11 +7,11 @@ from utils.convert import convert_presets
 
 
 
-def process_directory(input_dir: Path, extract_dir: Path, irs_dir: Path, vdc_dir: Path, xml_dir: Path, preset_converted_dir: Path):
+def process_directory(input_dir: Path, extract_dir: Path, filter_dir: Path, irs_dir: Path, vdc_dir: Path, xml_dir: Path, preset_converted_dir: Path):
 
     extract_archives(input_dir, extract_dir)
 
-    filter_irs_vdc_xml(extract_dir, irs_dir, vdc_dir, xml_dir)
+    filter_irs_vdc_xml(extract_dir, filter_dir, irs_dir, vdc_dir, xml_dir)
 
     convert_presets(xml_dir, preset_converted_dir)
 
@@ -40,7 +40,7 @@ def main(input_dir: Path, extract_dir: Path, filter_dir: Path, preset_converted_
     for dir in directories:
         dir.mkdir(parents=True, exist_ok=True)
 
-    process_directory(input_dir, extract_dir, irs_dir, vdc_dir, xml_dir, preset_converted_dir)
+    process_directory(input_dir, extract_dir, filter_dir, irs_dir, vdc_dir, xml_dir, preset_converted_dir)
 
 
 
