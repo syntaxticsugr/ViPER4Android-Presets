@@ -23,7 +23,7 @@ def filter_irs_vdc_xml(input_dir: Path, irs_dir: Path, vdc_dir: Path, xml_dir: P
 
             elif (file_extension == '.xml'):
                 if (file_name in ['bt_a2dp', 'headset', 'speaker', 'usb_device']):
-                    new_file_name = file_path.stem
+                    new_file_name = f'{file_path.stem}{file_path.suffix}_{file_name}'
                 else:
                     new_file_name = file_name
 
