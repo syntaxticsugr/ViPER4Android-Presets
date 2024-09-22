@@ -32,9 +32,9 @@ def filter_irs_vdc_xml(input_dir: Path, filter_dir: Path, irs_dir: Path, vdc_dir
             full_path = root/file
 
             file_name = new_file_name = full_path.stem
+            file_name_lower = file_name.lower()
             file_extension = full_path.suffix
 
-            file_name_lower = full_path.stem.lower()
             file_hash = sha256(full_path)
 
             if (file_extension == '.irs'):
@@ -65,14 +65,16 @@ def filter_irs_vdc_xml(input_dir: Path, filter_dir: Path, irs_dir: Path, vdc_dir
 
             elif (file_extension == '.xml'):
                 if (file_name_lower in ['bt_a2dp', 'headset', 'speaker', 'usb_device']):
-                    new_file_name = f'{root.stem}{root.suffix}-{file_name_lower}'.lower()
+                    new_file_name = f'{root.stem}{root.suffix}-{file_name_lower}'
 
-                if (new_file_name not in xml_hashes[file_hash]):
-                    xml_hashes[file_hash].add(new_file_name)
+                new_file_name_lower = new_file_name.lower()
 
-                    name_repeat_count = XMLs[new_file_name]
+                if (new_file_name_lower not in xml_hashes[file_hash]):
+                    xml_hashes[file_hash].add(new_file_name_lower)
+
+                    name_repeat_count = XMLs[new_file_name_lower]
                     name_repeat_count += 1
-                    XMLs[new_file_name] = name_repeat_count
+                    XMLs[new_file_name_lower] = name_repeat_count
 
                     if (1 < name_repeat_count):
                         new_file_name = f'{new_file_name}_{name_repeat_count}'
