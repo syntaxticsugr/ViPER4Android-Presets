@@ -30,7 +30,7 @@ def filter_irs_vdc_xml(input_dir: Path, output_dir: Path):
         for file in files:
             full_path = root/file
 
-            file_name = new_file_name = full_path.stem
+            file_name = new_file_name = full_path.stem.strip()
             file_name_lower = file_name.lower()
             file_extension = full_path.suffix
 
@@ -64,7 +64,7 @@ def filter_irs_vdc_xml(input_dir: Path, output_dir: Path):
 
             elif (file_extension == '.xml'):
                 if (file_name_lower in ['bt_a2dp', 'headset', 'speaker', 'usb_device']):
-                    new_file_name = f'{root.stem}{root.suffix}-{file_name_lower}'
+                    new_file_name = f'{root.stem}{root.suffix}'.strip()
 
                 new_file_name_lower = new_file_name.lower()
 
