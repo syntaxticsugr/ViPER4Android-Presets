@@ -258,7 +258,7 @@ def convert_presets(input_dir: Path, output_dir: Path):
                         if ("65540;65541;65542" in default_line):
                             if (("65540;65541;65542" in old_line) or ("65591;65592;65593" in old_line)):
                                 # Correcting '&' in Kernel(.irs) names
-                                old_line = old_line.replace("></string>amp;", "&amp;").replace(">Select impulse response file</string>amp;", "&amp;")
+                                old_line = old_line.replace("></string>amp;", "&amp;").replace(">Select impulse response file</string>amp;", "&amp;").replace("Select impulse response file", "").replace("Kernel", "").replace("Choose Impulse Response", "").replace("Selecione o arquivo de impulso de resposta", "")
                                 new_preset.write(old_line.replace("65591;65592;65593", "65540;65541;65542") + "\n")
                                 break
 
