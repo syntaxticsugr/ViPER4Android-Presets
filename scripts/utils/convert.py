@@ -1,9 +1,13 @@
 import os
 from pathlib import Path
+from utils.create_directories import create_directories
 
 
 
 def convert_presets(input_dir: Path, output_dir: Path):
+
+    preset_converted_dir = output_dir/'preset-converted'
+    create_directories([preset_converted_dir])
 
     default_m1_preset_file = Path('scripts/utils/default_presets/default_m1.xml')
     default_m2_preset_file = Path('scripts/utils/default_presets/default_m2.xml')
@@ -20,7 +24,7 @@ def convert_presets(input_dir: Path, output_dir: Path):
         # Input Preset
         # New Preset
         preset_file = input_dir/preset
-        new_preset_file = output_dir/(os.path.basename(preset))
+        new_preset_file = preset_converted_dir/(os.path.basename(preset))
         with (
             open(default_m1_preset_file) as default_m1_preset,
             open(default_m2_preset_file) as default_m2_preset,
@@ -398,3 +402,5 @@ def convert_presets(input_dir: Path, output_dir: Path):
                     # Speaker Optimization
                     else:
                         new_preset.write(default_line + "\n")
+
+    return(preset_converted_dir)

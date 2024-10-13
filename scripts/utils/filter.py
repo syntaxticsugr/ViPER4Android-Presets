@@ -3,6 +3,7 @@ import hashlib
 import shutil
 from collections import defaultdict
 from pathlib import Path
+from utils.create_directories import create_directories
 
 
 
@@ -15,7 +16,14 @@ def sha256(root):
 
 
 
-def filter_irs_vdc_xml(input_dir: Path, filter_dir: Path, irs_dir: Path, vdc_dir: Path, xml_dir: Path):
+def filter_irs_vdc_xml(input_dir: Path, output_dir: Path):
+
+    filter_dir = output_dir/'filtered'
+    irs_dir = filter_dir/'kernel'
+    vdc_dir = filter_dir/'ddc'
+    xml_dir = filter_dir/'preset'
+
+    create_directories([filter_dir, irs_dir, vdc_dir, xml_dir])
 
     IRSs = defaultdict(int)
     VDCs = defaultdict(int)
@@ -106,3 +114,5 @@ def filter_irs_vdc_xml(input_dir: Path, filter_dir: Path, irs_dir: Path, vdc_dir
         irs_dup_txt.writelines(irs_dup)
         vdc_dup_txt.writelines(vdc_dup)
         xml_dup_txt.writelines(xml_dup)
+
+    return(irs_dir, vdc_dir, xml_dir)
