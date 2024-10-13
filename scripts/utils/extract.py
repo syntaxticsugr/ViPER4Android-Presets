@@ -2,6 +2,7 @@ import os
 import shutil
 import patoolib
 from pathlib import Path
+from utils.create_directories import create_directories
 
 
 
@@ -21,6 +22,9 @@ def extract(archive_path: Path, extract_to: Path):
 
 def extract_archives(input_dir: Path, output_dir: Path):
 
+    extract_dir = output_dir/'extracted'
+    create_directories([extract_dir])
+
     for root, _, files in os.walk(input_dir):
 
         for file in files:
@@ -32,7 +36,7 @@ def extract_archives(input_dir: Path, output_dir: Path):
             file_extension = full_path.suffix
 
             if file_extension in ['.zip', '.rar']:
-                save_dir = output_dir/relative_file_path/file_name
+                save_dir = extract_dir/relative_file_path/file_name
                 save_dir.mkdir(parents=True, exist_ok=True)
 
                 extract(full_path, save_dir)
@@ -40,6 +44,8 @@ def extract_archives(input_dir: Path, output_dir: Path):
 
             else:
                 try:
-                    shutil.copy2(full_path, output_dir/(full_path.relative_to(input_dir)))
+                    shutil.copy2(full_path, extract_dir/(full_path.relative_to(input_dir)))
                 except:
                     pass
+
+    return extract_dir
