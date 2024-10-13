@@ -11,6 +11,7 @@ def write_duplicates_to_file(hashes: defaultdict, filename: Path):
         duplicates = []
 
         for key, value in hashes.items():
+            value = sorted(value)
             duplicates.append(f'{len(value)} : {key} : {value}\n')
 
         duplicates = sorted(duplicates, key=lambda x: (int(x.split(' : ')[0]), x.split(' : ')[1]), reverse=True)
@@ -27,12 +28,11 @@ def process_directory(directory: Path, hashes: defaultdict):
             full_path = root/file
 
             file_name = full_path.stem
-            file_name_lower = file_name.lower()
 
             file_hash = sha256(full_path)
 
-            if file_name_lower not in hashes[file_hash]:
-                hashes[file_hash].add(file_name_lower)
+            if file_name not in hashes[file_hash]:
+                hashes[file_hash].add(file_name)
 
 
 
