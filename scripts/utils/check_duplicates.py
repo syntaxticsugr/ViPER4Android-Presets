@@ -56,3 +56,5 @@ def check_duplicates(irs_dir: Path, vdc_dir: Path, xml_dir: Path, output_dir: Pa
     write_duplicates_to_file(irs_hashes, dup_irs_txt)
     write_duplicates_to_file(vdc_hashes, dup_vdc_txt)
     write_duplicates_to_file(xml_hashes, dup_xml_txt)
+
+    return(dup_irs_txt, dup_vdc_txt, dup_xml_txt)
