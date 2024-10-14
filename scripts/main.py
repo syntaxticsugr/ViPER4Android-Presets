@@ -1,7 +1,6 @@
 import os
 import sys
 from pathlib import Path
-from utils.check_duplicates import check_duplicates
 from utils.convert import convert_presets
 from utils.create_directories import create_directories
 from utils.create_release import create_release
@@ -18,9 +17,7 @@ def process_directory(input_dir: Path, output_dir: Path, new_version: str):
 
     preset_converted_dir = convert_presets(xml_dir, output_dir)
 
-    dup_irs_txt, dup_vdc_txt, dup_xml_txt = check_duplicates(irs_dir, vdc_dir, preset_converted_dir, output_dir)
-
-    create_release(irs_dir, vdc_dir, preset_converted_dir, dup_irs_txt, dup_vdc_txt, dup_xml_txt, output_dir, new_version)
+    create_release(irs_dir, vdc_dir, preset_converted_dir, output_dir, new_version)
 
 
 

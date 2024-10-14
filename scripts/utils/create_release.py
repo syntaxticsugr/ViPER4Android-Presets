@@ -1,10 +1,11 @@
 import ast
 import os
 import shutil
-import xml.etree.ElementTree as ET
-from collections import defaultdict
 from pathlib import Path
+from utils.check_duplicates import check_duplicates
 from utils.create_directories import create_directories
+from utils.find_missings import find_missings
+from utils.search_in_xml import search_in_xml
 
 
 
@@ -20,38 +21,25 @@ def copy_files(source_dir: Path, destination_dir: Path):
 
 def full_release(irs_dir: Path, vdc_dir: Path, xml_dir: Path, release_dir: Path):
     full_release_dir = release_dir/'Full'
-    full_ddc = full_release_dir/'DDC'
-    full_kernel = full_release_dir/'Kernel'
-    full_preset = full_release_dir/'Preset'
-    create_directories([full_release_dir, full_ddc, full_kernel, full_preset])
+    full_vdc = full_release_dir/'DDC'
+    full_irs = full_release_dir/'Kernel'
+    full_xml = full_release_dir/'Preset'
+    create_directories([full_release_dir, full_vdc, full_irs, full_xml])
 
-    copy_files(irs_dir, full_kernel)
-    copy_files(vdc_dir, full_ddc)
-    copy_files(xml_dir, full_preset)
+    copy_files(irs_dir, full_irs)
+    copy_files(vdc_dir, full_vdc)
+    copy_files(xml_dir, full_xml)
 
-
-
-def search_value_in_xml(xml: Path, key: str):
-    tree = ET.parse(xml)
-    root = tree.getroot()
-
-    for elem in root.findall('.//'):
-        if elem.get('name') == key:
-            return elem.text or elem.get('value')
-
-    return None
+    return full_release_dir
 
 
 
 def lite_release(irs_dir: Path, vdc_dir: Path, xml_dir: Path, dup_xml_txt: Path, release_dir: Path):
     lite_release_dir = release_dir/'Lite'
-    lite_ddc = lite_release_dir/'DDC'
-    lite_kernel = lite_release_dir/'Kernel'
-    lite_preset = lite_release_dir/'Preset'
-    create_directories([lite_release_dir, lite_ddc, lite_kernel, lite_preset])
-
-    missing_irs = defaultdict(set)
-    missing_vdc = defaultdict(set)
+    lite_vdc = lite_release_dir/'DDC'
+    lite_irs = lite_release_dir/'Kernel'
+    lite_xml = lite_release_dir/'Preset'
+    create_directories([lite_release_dir, lite_vdc, lite_irs, lite_xml])
 
     with open(dup_xml_txt, 'r') as dup_xml:
         dup_xml_data = dup_xml.readlines()
@@ -64,48 +52,41 @@ def lite_release(irs_dir: Path, vdc_dir: Path, xml_dir: Path, dup_xml_txt: Path,
 
             xml = xmls[0]
             xml = xml_dir/f'{xml}.xml'
-            shutil.copy2(xml, lite_preset)
+            shutil.copy2(xml, lite_xml)
 
-            vdc = search_value_in_xml(xml, "65547")
-            if vdc != None:
-                vdc = vdc_dir/vdc
-                try:
-                    shutil.copy2(vdc, lite_ddc)
-                except:
-                    vdc = os.path.basename(vdc)
-                    missing_vdc[vdc].add(xmls[0])
-
-            irs = search_value_in_xml(xml, "65540;65541;65542")
-            if irs != None:
+            irs = search_in_xml(xml, "65540;65541;65542")
+            if (irs != None):
                 irs = irs_dir/irs
                 try:
-                    shutil.copy2(irs, lite_kernel)
+                    shutil.copy2(irs, lite_irs)
                 except:
-                    irs = os.path.basename(irs)
-                    missing_irs[irs].add(xmls[0])
+                    pass
 
-    with open(lite_release_dir/'missing.txt', 'w') as file:
-        missing = []
+            vdc = search_in_xml(xml, "65547")
+            if (vdc != None):
+                vdc = vdc_dir/vdc
+                try:
+                    shutil.copy2(vdc, lite_vdc)
+                except:
+                    pass
 
-        for key, value in missing_irs.items():
-            value = sorted(value)
-            missing.append(f'{key} : {value}\n')
-
-        missing.append("\n\n\n")
-
-        for key, value in missing_vdc.items():
-            value = sorted(value)
-            missing.append(f'{key} : {value}\n')
-
-        file.writelines(missing)
+    return(lite_release_dir, lite_irs, lite_vdc, lite_xml)
 
 
 
-def create_release(irs_dir: Path, vdc_dir: Path, xml_dir: Path, dup_irs_txt: Path, dup_vdc_txt: Path, dup_xml_txt: Path, output_dir: Path, new_version: str):
+def create_release(irs_dir: Path, vdc_dir: Path, xml_dir: Path, output_dir: Path, new_version: str):
 
     release_dir = output_dir/new_version
     create_directories([release_dir])
 
-    full_release(irs_dir, vdc_dir, xml_dir, release_dir)
+    full_release_dir = full_release(irs_dir, vdc_dir, xml_dir, release_dir)
 
-    lite_release(irs_dir, vdc_dir, xml_dir, dup_xml_txt, release_dir)
+    find_missings(irs_dir, vdc_dir, xml_dir, full_release_dir)
+
+    dup_irs_txt, dup_vdc_txt, dup_xml_txt = check_duplicates(irs_dir, vdc_dir, xml_dir, full_release_dir)
+
+    lite_release_dir, lite_irs_dir, lite_vdc_dir, lite_xml_dir = lite_release(irs_dir, vdc_dir, xml_dir, dup_xml_txt, release_dir)
+
+    find_missings(irs_dir, vdc_dir, lite_xml_dir, lite_release_dir)
+
+    dup_irs_lite_txt, dup_vdc_lite_txt, dup_xml_lite_txt = check_duplicates(lite_irs_dir, lite_vdc_dir, lite_xml_dir, lite_release_dir)
