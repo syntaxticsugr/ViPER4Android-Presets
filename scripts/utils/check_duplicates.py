@@ -38,7 +38,6 @@ def process_directory(directory: Path, hashes: defaultdict):
 
 def check_duplicates(irs_dir: Path, vdc_dir: Path, xml_dir: Path, output_dir: Path):
 
-    output_dir = output_dir/'duplicates'
     create_directories([output_dir])
 
     irs_hashes = defaultdict(set)
