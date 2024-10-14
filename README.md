@@ -11,19 +11,20 @@
 
 `DDC(.vdc)` & `Kernel(.irs)` files are provided _as is_ from the orignal authors without any modifications.
 
-`Preset(.xml)` are patched as & if necessary to work on the latest ViPER4AndroidFX.
+`Preset(.xml)` are patched _as & if_ necessary to work on the latest ViPER4Android.
 
-Values of `Master Limiter` & `Playback Gain Control` are set to [ViPER Defaults](https://github.com/syntaxticsugr/ViPER4Android-Presets/tree/main/scripts/utils/default_presets) for all patched `Preset(.xml)`.
+Values of `Master Limiter` & `Playback Gain Control` are set to [ViPER Defaults](https://github.com/syntaxticsugr/ViPER4Android-Presets/tree/main/scripts/utils/default_presets) for all `Preset(.xml)`.
 
 <br>
 
-### [Release Info - v1.7.0](https://github.com/syntaxticsugr/ViPER4Android-Presets/releases/latest)
+### Release Info
 
-| ⭐ | Total | Uniques |
-| --- | --- | --- |
-| **DDC** | 625 | ? |
-| **Kernel** | 2298 | ? |
-| **Preset** | 1648 | ? |
+| [v2.0.0](https://github.com/syntaxticsugr/ViPER4Android-Presets/releases/latest) | Full | Lite | Recommended |
+| --- | --- | --- | --- |
+| ⭐ | All `Preset`s<br>All `Kernel`s<br>All `DDC`s | Unique `Preset`s<br>Required `Kernel`s<br>Required `DDC`s | Unique `Preset`s<br>Unique `Kernel`s<br>Unique `DDC`s |
+| **Preset** | 1741 | 847 | 847 |
+| **Kernel** | 2306 | 198 | 1716 |
+| **DDC** | 626 | 44 | 580 |
 
 <br>
 
