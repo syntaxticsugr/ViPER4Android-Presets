@@ -63,7 +63,10 @@ def filter_irs_vdc_xml(input_dir: Path, output_dir: Path):
 
             elif (file_extension == '.xml'):
                 if (file_name in ['bt_a2dp', 'headset', 'speaker', 'usb_device']):
-                    new_file_name = f'{root.stem}{root.suffix}'
+                    if (root.suffix == ''):
+                        new_file_name = f'{root.stem}-{file_name}'
+                    else:
+                        new_file_name = f'{root.stem}{root.suffix}-{file_name}'
 
                 if (new_file_name not in xml_hashes[file_hash]):
                     xml_hashes[file_hash].add(new_file_name)
