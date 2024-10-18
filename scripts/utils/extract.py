@@ -23,20 +23,27 @@ def extract(archive_path: Path, extract_to: Path):
 def extract_archives(input_dir: Path, output_dir: Path):
 
     extract_dir = output_dir/'extracted'
-    create_directories([extract_dir])
+
+    if (input_dir != output_dir):
+        create_directories([extract_dir])
 
     for root, _, files in os.walk(input_dir):
 
         for file in files:
-            file_path = Path(root)
-            relative_file_path = file_path.relative_to(input_dir)
-            full_path = file_path/file
+            root = Path(root)
+
+            relative_file_path = root.relative_to(input_dir)
+            full_path = root/file
 
             file_name = full_path.stem
             file_extension = full_path.suffix
 
-            if file_extension in ['.zip', '.rar']:
-                save_dir = extract_dir/relative_file_path/file_name
+            if file_extension in ['.zip', '.rar', '.tar']:
+                if (input_dir != output_dir):
+                    save_dir = extract_dir/relative_file_path
+                else:
+                    save_dir = output_dir/relative_file_path/file_name
+
                 save_dir.mkdir(parents=True, exist_ok=True)
 
                 extract(full_path, save_dir)
