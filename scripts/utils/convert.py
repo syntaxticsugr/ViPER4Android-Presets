@@ -23,7 +23,7 @@ def convert_presets(input_dir: Path, output_dir: Path):
             old_preset_file = root/file
             new_preset_file = preset_converted_dir/file
             # Select Default Preset file
-            if (any(keyword in file.lower() for keyword in ['bluetooth', 'headset', 'usb_device'])):
+            if (any(keyword in file.lower() for keyword in ['bluetooth', 'headset', 'usb'])):
                 default_preset_file = default_m1_preset_file
             elif ('speaker' in file.lower()):
                 default_preset_file = default_m2_preset_file
