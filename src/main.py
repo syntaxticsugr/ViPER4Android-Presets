@@ -1,11 +1,11 @@
 import os
 import sys
 from pathlib import Path
-from utils.convert import convert_presets
 from utils.create_directories import create_directories
-from utils.create_release import create_release
-from utils.extract import extract_archives
-from utils.filter import filter_irs_vdc_xml
+from utils.pipeline.convert import convert_presets
+from utils.pipeline.create_release import create_release
+from utils.pipeline.extract import extract_archives
+from utils.pipeline.filter import filter_irs_vdc_xml
 
 
 

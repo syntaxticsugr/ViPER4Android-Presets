@@ -13,7 +13,7 @@
 
 `Preset(.xml)` are patched _as & if_ necessary to work on the latest ViPER4Android.
 
-Values of `Master Limiter` & `Playback Gain Control` are set to [ViPER Defaults](https://github.com/syntaxticsugr/ViPER4Android-Presets/tree/main/scripts/utils/default_presets) for all `Preset(.xml)`.
+Values of `Master Limiter` & `Playback Gain Control` are set to [ViPER Defaults](https://github.com/syntaxticsugr/ViPER4Android-Presets/tree/main/src/utils/default_presets) for all `Preset(.xml)`.
 
 <br>
 
