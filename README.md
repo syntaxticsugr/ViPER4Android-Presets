@@ -19,7 +19,7 @@ Values of `Master Limiter` & `Playback Gain Control` are set to [ViPER Defaults]
 
 ### Release Info
 
-| [v2.0.0](https://github.com/syntaxticsugr/ViPER4Android-Presets/releases/latest) | Full | Lite | Recommended |
+| [v2.1.0](https://github.com/syntaxticsugr/ViPER4Android-Presets/releases/latest) | Full | Lite | Recommended |
 | --- | --- | --- | --- |
 | ⭐ | All `Preset`s<br>All `Kernel`s<br>All `DDC`s | Unique `Preset`s<br>Required `Kernel`s<br>Required `DDC`s | Unique `Preset`s<br>Unique `Kernel`s<br>Unique `DDC`s |
 | **Preset** | 1741 | 847 | 847 |

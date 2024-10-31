@@ -35,7 +35,7 @@ def main(input_dir: Path, output_dir: Path, new_version: str):
 
 if __name__ == "__main__":
 
-    new_version = '2.0.0'
+    new_version = '2.1.0'
 
     input_dir = Path('in')
     output_dir = Path('build/output')
