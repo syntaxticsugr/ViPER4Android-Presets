@@ -1,4 +1,4 @@
-Mode 1 (M1) = Headset, Bluetooth, USB
+m1 (Mode 1) = Headset, Bluetooth, USB
 -------------------------------------
 
 # Mode

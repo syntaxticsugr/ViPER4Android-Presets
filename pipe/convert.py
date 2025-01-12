@@ -2,16 +2,16 @@ import os
 from pathlib import Path
 from utils.create_directories import create_directories
 
+# Path to Default Presets
+default_m1_preset_file = Path('default_presets/default_m1.xml')
+default_m2_preset_file = Path('default_presets/default_m2.xml')
 
-
-def convert_presets(input_dir: Path, output_dir: Path):
+def convert_presets(input_dir: Path, output_dir: Path) -> Path:
+    """Convert any ViPER Preset XML to version 2.7.2+ compatible format."""
+    print("Converting Presets ...")
 
     preset_converted_dir = output_dir/'preset-converted'
     create_directories([preset_converted_dir])
-
-    # Path to Default Presets
-    default_m1_preset_file = Path('src/utils/default_presets/default_m1.xml')
-    default_m2_preset_file = Path('src/utils/default_presets/default_m2.xml')
 
     # List all files in input directory
     for root, _, files in os.walk(input_dir):
@@ -377,3 +377,8 @@ def convert_presets(input_dir: Path, output_dir: Path):
                             new_preset.write(default_line + "\n")
 
     return(preset_converted_dir)
+
+if __name__ == "__main__":
+    input_dir = Path('')
+    output_dir = Path('')
+    convert_presets(input_dir, output_dir)

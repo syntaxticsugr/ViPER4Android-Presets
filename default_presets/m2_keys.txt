@@ -1,4 +1,4 @@
-Mode 2 (M2) = Speaker
+m2 (Mode 2) = Speaker
 ---------------------
 
 # Mode

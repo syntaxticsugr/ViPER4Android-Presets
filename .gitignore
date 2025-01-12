@@ -161,5 +161,8 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# From SyntaxticSugr
-in/**/*.zip
+# Ignore everything in the input folder
+in/*
+# But keep README.md and download.py
+!in/README.md
+!in/download.py

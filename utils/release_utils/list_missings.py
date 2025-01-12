@@ -1,11 +1,11 @@
 import os
 from collections import defaultdict
 from pathlib import Path
-from utils.search_in_xml import search_in_xml
+from utils.release_utils.search_in_xml import search_in_xml
 
+def list_missings(irs_dir: Path, vdc_dir: Path, xml_dir: Path, output_dir: Path) -> None:
+    """List missing IRSs & VDCs in missing.txt"""
 
-
-def find_missings(irs_dir: Path, vdc_dir: Path, xml_dir: Path, output_dir: Path):
     missing_irs = defaultdict(set)
     missing_vdc = defaultdict(set)
 
@@ -24,7 +24,7 @@ def find_missings(irs_dir: Path, vdc_dir: Path, xml_dir: Path, output_dir: Path)
                 missing_vdc[vdc].add(file)
 
     with open(output_dir/'missing.txt', 'w') as file:
-        missing = []
+        missing = ["[IRS]\n"]
 
         temp_missing = []
         for key, value in missing_irs.items():
@@ -34,7 +34,7 @@ def find_missings(irs_dir: Path, vdc_dir: Path, xml_dir: Path, output_dir: Path)
         temp_missing = sorted(temp_missing, key=lambda x: (int(x.split(' : ')[0]), x.split(' : ')[1]), reverse=True)
         missing.extend(temp_missing)
 
-        missing.append("\n\n\n")
+        missing.append("\n[VDC]\n")
 
         temp_missing = []
         for key, value in missing_vdc.items():

@@ -1,9 +1,10 @@
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-
-
-def search_in_xml(xml: Path, key: str):
+def search_in_xml(xml: Path, key: str) -> (str | None):
+    """
+    Seach for a key in ViPER XML and return it's value.
+    """
     tree = ET.parse(xml)
     root = tree.getroot()
 
